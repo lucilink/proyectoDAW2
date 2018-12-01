@@ -19,20 +19,20 @@ require_once "DBPDO.php";//Llamamos a la clase para la conexión a la base de da
 class MascotasPDO{
     
     /**
-     * @function altaMascota($codMascota, $nombre, $edad, $vacunado, $microchip, $tipo, $fechallegada,$imagen)
+     * @function altaMascotaaltaMascota($codMascota, $nombre,$imagen, $edad, $vacunado, $microchip, $esterilizado, $tipo, $fechallegada)
      * 
      * Funcion para dar de alta una mascota
      * 
-     * @param  string $codMascota, string $nombre, int $edad, boolean $vacunado, boolean $microchip, string $tipo, date $fechallegada, blob $imagen
+     * @param  string $codMascota, string $nombre,blob $imagen, int $edad, boolean $vacunado, boolean $microchip, boolean $esterilizado,string $tipo, date $fechallegada, blob $imagen
      * 
      * @return boolean devuelve true si se ha podido dar de alta y false en caso contrario
      * 
      */
     
-    public static function altaMascota($codMascota, $nombre, $edad, $vacunado, $microchip, $tipo, $fechallegada,$imagen){
+    public static function altaMascota($codMascota, $nombre,$imagen, $edad, $vacunado, $microchip, $esterilizado, $tipo, $fechallegada){
         $registrado=false;
-        $consulta="INSERT INTO Mascotas (CodMascota, Nombre, Edad, Vacunado, Microchip, Tipo, FechaLlegada, Imagen) VALUES (?,?,?,?,?,?,?,?,?)";
-        $resConsulta= DBPDO::ejecutaConsulta($consulta, [$codMascota, $codProtectora, $nombre, $edad, $vacunado, $microchip, $tipo, $fechallegada,$imagen]);
+        $consulta="INSERT INTO Mascotas (CodMascota, Nombre, Imagen, Edad, Vacunado, Microchip,Esterilizado, Tipo, FechaLlegada,FechaReserva,FechaAdopcion) VALUES (?,?,?,?,?,?,?,?,?,NULL,NULL)";
+        $resConsulta= DBPDO::ejecutaConsulta($consulta, [$codMascota, $nombre, $imagen, $edad, $vacunado, $microchip, $esterilizado, $tipo, $fechallegada]);
         if ($resConsulta->rowCount()==1){
             $registrado=true;
         }

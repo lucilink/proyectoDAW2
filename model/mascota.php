@@ -4,23 +4,22 @@
  * File usuario.php
  * @author Lucía Rodríguez Álvarez
  *
- * Fichero que contiene los metodos y atributos del objeto usuario
- * Fecha ultima revision 09-08-2018
+ * Fichero que contiene los metodos y atributos del objeto mascota
+ * Fecha ultima revision 01-12-2018
  */
 
 require_once 'mascotasPDO.php';
 
 /**
- * Class Usuario
+ * Class Mascota
  * @author Lucía Rodríguez Álvarez
- * Fecha última revisión 09-08-2018
+ * Fecha última revisión 01-12-2018
  */
 
 class Mascota{
     private $codMascota;
     private $nombre;
     private $imagen;
-   // private $tipoImagen;
     private $edad;
     private $vacunado;
     private $microhip;
@@ -35,7 +34,6 @@ class Mascota{
         $this->codMascota = $codMascota;
         $this->nombre = $nombre;
         $this->imagen = $imagen;
-        //$this->tipoImagen = $tipoImagen;
         $this->edad = $edad;
         $this->vacunado = $vacunado;
         $this->microhip = $microhip;
@@ -161,6 +159,7 @@ class Mascota{
         return MascotasPDO::contarMascotaTipo($codMascota);
     }
 
+    
 
     
     
