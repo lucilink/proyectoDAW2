@@ -41,7 +41,7 @@ if(!isset($_SESSION['usuario'])){//Comprobamos que está la sesión
     if(isset($_GET['pagina'])){
         include_once $controladores[$_GET['pagina']];
     }else{
-        include_once $controladores['inicio'];
+        include_once $controladores['mtoMascotas'];
     }
 }
 ?>

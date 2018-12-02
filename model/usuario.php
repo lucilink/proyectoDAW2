@@ -1,0 +1,353 @@
+<?php
+/**
+ * File usuario.php
+ * @author Lucía Rodríguez Álvarez
+ *
+ * Fichero que contiene los metodos y atributos del objeto usuario
+ * Fecha ultima revision 09-08-2018
+ */
+
+require_once 'usuarioPDO.php';
+
+/**
+ * Class Usuario
+ * @author Lucía Rodríguez Álvarez
+ * Fecha última revisión 09-08-2018
+ */
+
+Class Usuario{
+    /**
+     * @var string $codUsuario
+     */
+    private $codUsuario;
+    
+    /**
+     * @var string $passworde
+     */
+    private $password;
+    
+    /**
+     * @var string $nombre
+     */
+    private $nombre;
+    
+    /**
+     * @var string $apellido1
+     */
+    private $apellido1;
+    
+    /**
+     * @var string $apellido2
+     */
+    private $apellido2;
+    
+    /**
+     * @var string $dni
+     */
+    private $dni;
+    
+    /**
+     * @var date (Y-m-d) $fNacimiento
+     */
+    private $fNacimiento;
+    
+    /**
+     * @var string $perfil
+     */
+    private $perfil;
+    
+    /**
+     * @var string $telefono
+     */
+    private $telefono;
+    
+    /**
+     * @var string $email
+     */
+    private $email;
+    
+    /**
+     * @var string $direccion
+     */
+    private $direccion;
+    
+    function __construct($codUsuario, $password, $nombre, $apellido1, $apellido2, $dni, $fNacimiento, $perfil, $telefono, $email, $direccion) {
+        $this->CodUsuario = $codUsuario;
+        $this->Password = $password;
+        $this->Nombre = $nombre;
+        $this->Apellido1 = $apellido1;
+        $this->Apellido2 = $apellido2;
+        $this->DNI = $dni;
+        $this->Fnacimiento = $fNacimiento;
+        $this->Perfil = $perfil;
+        $this->Telefono = $telefono;
+        $this->Email = $email;
+        $this->Direccion = $direccion;
+    }
+    
+    function getCodUsuario() {
+        return $this->CodUsuario;
+    }
+
+    function getPassword() {
+        return $this->Password;
+    }
+
+    function getNombre() {
+        return $this->Nombre;
+    }
+
+    function getApellido1() {
+        return $this->Apellido1;
+    }
+
+    function getApellido2() {
+        return $this->Apellido2;
+    }
+
+    function getDni() {
+        return $this->DNI;
+    }
+
+    function getFNacimiento() {
+        return $this->Fnacimiento;
+    }
+
+    function getPerfil() {
+        return $this->Perfil;
+    }
+
+    function getTelefono() {
+        return $this->Telefono;
+    }
+
+    function getEmail() {
+        return $this->Email;
+    }
+    
+    function getDireccion() {
+        return $this->Direccion;
+    }
+
+    function setCodUsuario($codUsuario) {
+        $this->CodUsuario = $codUsuario;
+    }
+
+    function setPassword($password) {
+        $this->Password = $password;
+    }
+
+    function setNombre($nombre) {
+        $this->Nombre = $nombre;
+    }
+
+    function setApellido1($apellido1) {
+        $this->Apellido1 = $apellido1;
+    }
+
+    function setApellido2($apellido2) {
+        $this->Apellido2 = $apellido2;
+    }
+
+    function setDni($dni) {
+        $this->DNI = $dni;
+    }
+
+    function setFNacimiento($fNacimiento) {
+        $this->Fnacimiento = $fNacimiento;
+    }
+
+    function setPerfil($perfil) {
+        $this->Perfil = $perfil;
+    }
+
+    function setTelefono($telefono) {
+        $this->Telefono = $telefono;
+    }
+    
+    function setEmail($email) {
+        $this->Email = $email;
+    }
+    
+    function setDireccion($direccion) {
+        $this->Direccion = $direccion;
+    }
+
+        
+    /**
+     * @function validarUsuario($codUsuario, $password)
+     * 
+     * Funcion para comprobar si el usuario puede acceder o no
+     * 
+     * @param  string $codUsuario, string $password
+     * 
+     * @return array con los datos del Usuario
+     * 
+     */
+
+    public static function validarUsuario($codUsuario, $password){
+        $usuario=null;
+        $aUsuario= UsuarioPDO::validarUsuario($codUsuario, $password);
+        if(!empty($aUsuario)){
+            $usuario = new Usuario($codUsuario,$password,$aUsuario['Nombre'],$aUsuario['Apellido1'],$aUsuario['Apellido2'],$aUsuario['DNI'],$aUsuario['Fnacimiento'],$aUsuario['Perfil'],$aUsuario['Telefono'],$aUsuario['Email']);
+
+        }
+        return $usuario;
+    }
+    
+    /**
+     * @function registrarUsuario($codUsuario, $password, $nombre, $apellido1, $apellido2, $dni, $fNacimiento, $telefono)
+     * 
+     * Funcion para registar a un usuario
+     * 
+     * @param  string $codUsuario, string $password, string $nombre, string $apellido1, string $apellido2 string $dni, date (Y-m-d) $fNacimiento, string $telefono
+     * 
+     * @return boolean devuelve true si ha podido registrar y false en caso contrario
+     * 
+     */
+    
+    public static function registrarUsuario($codUsuario, $password,$nombre,$apellido1,$apellido2,$dni,$fNacimiento,$telefono,$email,$direccion){
+        $usuario=null;
+        if(UsuarioPDO::registrarUsuario($codUsuario,$password,$nombre,$apellido1,$apellido2,$dni,$fNacimiento,$telefono,$email,$direccion)){
+            $usuario=new Usuario($codUsuario,$password,$nombre,$apellido1,$apellido2,$dni,$fNacimiento,"Usuario",$telefono,$email,$direccion);
+        }
+        return $usuario;
+    }
+    
+    /**
+     * @function comprobarExisteUsuario($codUsuario)
+     * 
+     * Funcion para comprobar si existe un usuario
+     * 
+     * @param  string $codUsuario
+     * 
+     * @return boolean devuelve true si el usuario existe y false en caso contrario
+     * 
+     */
+
+    public static function comprobarExisteUsuario($codUsuario){
+        return UsuarioPDO::comprobarExisteUsuario($codUsuario);
+    }
+    
+    /**
+     * @function editarPerfil($nombre,$apellido1,$apellido2,$dni,$fNacimiento,$telefono)
+     * 
+     * Funcion para editar el perfil del usuario
+     * 
+     * @param  string $password, string $nombre, string $apellido1, string $apellido2 string $dni, date (Y-m-d) $fNacimiento, string $telefono
+     * 
+     * @return boolean devuelve true si el usuario se ha podido editar y false en caso contrario
+     * 
+     */
+    
+    public function editarUsuario($password,$nombre,$apellido1,$apellido2,$dni,$fNacimiento,$telefono,$email,$direccion){
+      $editado=false;
+      $codUsuario= $this->getCodUsuario();
+      if(empty($password)){
+          $password=hash('sha256', $this->getPassword());
+      }
+      if(UsuarioPDO::editarPerfilUsuario($password, $nombre, $apellido1, $apellido2, $dni, $fNacimiento, $telefono,$email,$direccion, $codUsuario)){
+          $this->setPassword($password);
+          $this->setNombre($nombre);
+          $this->setApellido1($apellido1);
+          $this->setApellido2($apellido2);
+          $this->setDni($dni);
+          $this->setFNacimiento($fNacimiento);
+          $this->setTelefono($telefono); 
+          $this->setEmail($email);
+          $this->setDireccion($direccion);
+          $editado=true;
+      }
+      return $editado;
+    }
+    
+    /**
+     * @function eliminarUsuario()
+     * 
+     * Funcion para eliminar un perfil de usuario
+     *
+     * @return boolean devuelve true si el usuario se ha podido eliminar y false en caso contrario
+     * 
+     */
+    
+    public function eliminarUsuario(){
+        $eliminado=false;
+        $codUsuario= $this->getCodUsuario();
+        if(UsuarioPDO::eliminarUsuario($codUsuario)){
+            $eliminado=true;
+        }
+        return $eliminado;
+    }
+    
+    /**
+     * @function buscarUsuarioNombre($nombre,$pagina,$registrosPagina)
+     * 
+     * Funcion para buscar usuarios por el nombre de estos
+     * 
+     * @param  string $nombre, int $pagina, int $registroPagina
+     * 
+     * @return devuelve un arrray con el congunto de usuarios por pagina
+     * 
+     */
+    public static function buscarUsuarioNombre($codUsuario,$pagina,$registrosPagina){
+        $arrayUsuarios=null;
+        if(is_null($pagina)){
+            $pagina=1;
+        }
+        $usuario= UsuarioPDO::buscarUsuarioNombre($codUsuario, $pagina, $registrosPagina);
+        if(!empty($usuario)){
+            for($i=0;$i<count($usuario);$i++){
+                $arrayUsuarios[$i]=new Usuario($usuario[$i]['Codigo'],$usuario[$i]['Password'],$usuario[$i]['Nombre'],$usuario[$i]['Apellido1'],$usuario[$i]['Apellido2'],$usuario[$i]['DNI'],$usuario[$i]['Fnacimiento'],$usuario[$i]['Perfil'],$usuario[$i]['Telefono'],$usuario[$i]['Email'],$usuario[$i]['Direccion']);
+            }
+        }
+        return $arrayUsuarios;
+    }
+    
+    /**
+     * @function contarUsuariosNombre($nombre)
+     * 
+     * Funcion para sacar el total de usuarios que hay en la base de datos
+     * 
+     * @param  string $codUsuario
+     * 
+     * @return devuelve el total de usuarios
+     * 
+     */
+    public static function contarUsuariosNombre($codUsuario){
+        return UsuarioPDO::contarUsuariosNombre($codUsuario);
+    }
+    
+   /**
+     * @function contarUsuariosNombre($nombre)
+     * 
+     * Funcion para sacar el total de usuarios que hay en la base de datos
+     * 
+     * @param  string $codUsuario
+     * 
+     * @return boolean Devuelve true si se ha eliminado o false en el caso contrario.
+     * 
+     */ 
+    public function bajaUsuario($codUsuario){
+        return UsuarioPDO::bajaUsuario($codUsuario);
+    }
+    
+    /**
+     * @function buscarUsuarioPorCodigo($codUsuario)
+     * 
+     * Funcion para buscar usuarios por el nombre de estos
+     * 
+     * @param  string $codUsuario
+     * 
+     * @return Usuario|Null
+     * 
+     */
+    
+     public static function buscarUsuarioPorCodigo($codUsuario){
+        $usuario = null;
+        $arrayUsuario = UsuarioPDO::buscarUsuarioPorCodigo($codUsuario);
+        if(!empty($arrayUsuario)){
+            $usuario = new Usuario($arrayUsuario['Codigo'],$arrayUsuario['Password'],$arrayUsuario['Nombre'],$arrayUsuario['Apellido1'],$arrayUsuario['Apellido2'],$arrayUsuario['DNI'],$arrayUsuario['Fnacimiento'],$arrayUsuario['Perfil'],$arrayUsuario['Telefono'],$arrayUsuario['Email'],$arrayUsuario['Direccion']);
+        }
+        return $usuario;
+    }
+}
