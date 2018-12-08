@@ -82,13 +82,13 @@ class MascotasPDO{
     }
     
     /**
-     * @function buscarUsuarioNombre($codUsuario,$pagina,$registrosPagina)
+     * @function buscarMascotaTipo($codMascota,$pagina,$registrosPagina)
      * 
-     * Funcion para buscar usuarios por el nombre de estos
+     * Funcion para buscar mascotas por el tipo de estas
      * 
-     * @param  string $codUsuario, int $pagina, int $registroPagina
+     * @param  string $codMascota, int $pagina, int $registroPagina
      * 
-     * @return devuelve un arrray con el congunto de usuarios por pagina
+     * @return devuelve un arrray con el congunto de mascotas por pagina
      * 
      */
     
@@ -128,13 +128,13 @@ class MascotasPDO{
     }
     
     /**
-     * @function contarUsuariosNombre($codUsuario)
+     * @function contarMascotaTipo($codMascota)
      * 
-     * Funcion para sacar el total de usuarios que hay en la base de datos
+     * Funcion para sacar el total de mascotas que hay en la base de datos
      * 
-     * @param  string $codUsuario
+     * @param  string $codMascota
      * 
-     * @return devuelve el total de usuarios
+     * @return devuelve el total de mascotas
      * 
      */
     
@@ -155,7 +155,7 @@ class MascotasPDO{
     /**
      * @function comprobarExisteMascota($codMascota)
      * 
-     * Funcion para comprobar si existe un usuario
+     * Funcion para comprobar si existe una mascota
      * 
      * @param  string $codMascota
      * 
@@ -196,7 +196,7 @@ class MascotasPDO{
     
     
     /**
-     * @function buscarDepartamentoPorCodigo($codMascota).
+     * @function buscarMascotaPorCodigo($codMascota).
      *
      * Función para buscar una Mascota en la base de datos según su código.
      *

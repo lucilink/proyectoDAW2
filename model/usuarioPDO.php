@@ -216,31 +216,6 @@ class UsuarioPDO{
         return $totalUsuarios;
     }
     
-    
-    //SIN ACABAR
-    
-    /**
-     * @function contarUsuariosNombre($codUsuario)
-     * 
-     * Funcion para sacar el total de usuarios que hay en la base de datos
-     * 
-     * @param  string $codUsuario
-     * 
-     * @return devuelve el total de usuarios
-     * 
-     */
-    
-    public static function editarTipoUsuario($perfil,$codUsuario){
-        $editado=false;
-        $consulta="update Usuarios set Perfil=? where CodUsuario=?";
-        $resConsulta= DBPDO::ejecutaConsulta($consulta,[$perfil,$codUsuario]);
-        if ($resConsulta->rowCount()==1){
-            $editado=true;
-        }
-        return $editado;
-    }
-
-    
     /**
      * @function buscarUsuarioPorCodigo($codUsuario)
      * 

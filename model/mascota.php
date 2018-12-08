@@ -159,6 +159,18 @@ class Mascota{
         $this->codUsuario = $codUsuario;
     }
 
+    
+    /**
+     * @function buscarMascotaTipo($codMascota,$pagina,$registrosPagina)
+     * 
+     * Funcion para buscar mascotas por el tipo de estas
+     * 
+     * @param  string $codMascota, int $pagina, int $registroPagina
+     * 
+     * @return devuelve un arrray con el congunto de mascotas por pagina
+     * 
+     */
+    
     public static function buscarMascotaTipo($codMascota,$pagina,$registrosPagina){
         $arrayMascotas=null;
         if(is_null($pagina)){
@@ -173,10 +185,32 @@ class Mascota{
         return $arrayMascotas;
     }
     
+    /**
+     * @function contarMascotaTipo($codMascota)
+     * 
+     * Funcion para sacar el total de mascotas que hay en la base de datos
+     * 
+     * @param  string $codMascota
+     * 
+     * @return devuelve el total de mascotas
+     * 
+     */
+    
     public static function contarMascotaTipo($codMascota){
         return MascotasPDO::contarMascotaTipo($codMascota);
     }
 
+    /**
+     * @function altaMascotaaltaMascota($codMascota, $nombre,$imagen, $edad, $vacunado, $microchip, $esterilizado, $tipo, $fechallegada)
+     * 
+     * Funcion para dar de alta una mascota
+     * 
+     * @param  string $codMascota, string $nombre,blob $imagen, int $edad, boolean $vacunado, boolean $microchip, boolean $esterilizado,string $tipo, date $fechallegada, 
+     * 
+     * @return boolean devuelve true si se ha podido dar de alta y false en caso contrario
+     * 
+     */
+    
     public static function altaMascota($codMascota, $nombre,$imagen,$descripcion, $edad,$sexo, $vacunado, $microchip, $esterilizado, $tipo, $fechallegada){
         $mascota=null;
         if(MascotasPDO::altaMascota($codMascota, $nombre, $imagen,$descripcion, $edad,$sexo, $vacunado, $microchip, $esterilizado, $tipo, $fechallegada)){
@@ -202,12 +236,12 @@ class Mascota{
     
 
     /**
-     * @function comprobarExisteMascota($codMascota)
-     * 
-     * Funcion para eliminar una Mascota
-     * 
-     * @param  string $codMascota
-     * 
+     * @function eliminarMascota($codMascota).
+     *
+     * Función para eliminar una mascota de nuestra base de datos.
+     *
+     * @param string $codMascota 
+     *
      * @return boolean devuelve true si la mascota existe y false en caso contrario y false en caso contrario
      * 
      */
@@ -234,15 +268,7 @@ class Mascota{
         return $mascota;
     }
     
-    /**
-     * @function buscarMascotaPorCodigo($codMascota).
-     *
-     * Función para buscar una mascota por su código.
-     *
-     * @param string $codMascota Código de la mascota a buscar.
-     *
-     * @return boolean devuelve true si la mascota se ha podido editar y false en caso contrario
-     */
+
     
     public function editarDatosMascota ($nombre,$edad,$codMascota){
         $editado = false;
@@ -262,10 +288,31 @@ class Mascota{
     }
      *      */
     
+    
+   /**
+     * @function reservarMascota($fechaReserva,$codUsuario,$codMascota)
+     * 
+     * Funcion para adoptar una mascota
+     * 
+     * @param  string $codMascota, string $codUsuario, date $fechaAdopcion
+     * 
+     * @return boolean devuelve true si se ha podido adoptar
+     * 
+     */   
     public function reservarMascota($fechaReserva,$codUsuario, $codMascota){
         return MascotasPDO::reservarMascota($fechaReserva, $codUsuario, $codMascota);
     }
-    
+
+    /**
+     * @function deshacerReservaMascota($codMascota)
+     * 
+     * Funcion para adoptar una mascota
+     * 
+     * @param  string $codMascota
+     * 
+     * @return boolean devuelve true si se ha podido adoptar
+     * 
+     */    
     public function deshacerReservaMascota ($codMascota){
         return MascotasPDO::deshacerReservaMascota($codMascota);
     }
