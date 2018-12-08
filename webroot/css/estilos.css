@@ -1,0 +1,205 @@
+.col-md-3.pull-right {
+    margin-top: 2%;
+}
+
+input.boton {
+    border: 0px!important;
+    background-color: #92c01f;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
+    margin-top:15% !important;
+    color: #fff;
+}
+input.boton:hover {
+color: #fff;
+}
+
+.logotipo{
+    margin-top: -5%;
+}
+
+nav.navbar {
+    background: #92c01f;
+    padding-bottom: 4px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.foot{
+    background: #92c01f;
+    color: #fff;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    clear: both!important;
+}
+
+.btnAceptar{
+    background: #92c01f;
+    color:#fff;
+}
+
+.navbar {
+margin-bottom: 0px;
+padding-bottom: 2%!important;
+padding-top: 1%;
+}
+
+.navbar-inverse {
+    border-color: #92c01f;
+    padding-bottom: 0px;
+}
+
+.pfoot{
+    color: #fff;
+
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #92c01f;
+    border-color: #92c01f;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #92c01f;
+}
+
+form.form-horizontal {
+    margin-bottom: 2%;
+}
+
+.forreg{
+    margin-top: 1.5%;
+}
+
+@media (min-width: 768px){
+.navbar-right {
+    float: right !important;
+    margin-right: -3px;
+}
+}
+
+.regis{
+    margin-top: 1%;
+    color: #fff;
+}
+
+.regis:hover{
+    color: #fff;
+}
+
+.mascota {
+    font-size: 15px;
+}
+
+.datosmas{
+    margin-top: 1%;
+}
+
+.botoformulario{
+    margin-bottom: 3%;
+}
+
+p.descripcion {
+    margin-top: 2%;
+    font-size: 23px;
+    border: 1px solid #eeeeee;
+    padding: 2%;
+    background-color: #eeeeee;
+    border-radius: 4px;
+}
+
+.formularioPeque {
+    width: 10%!important;
+    margin-right: 5%;
+}
+
+.imgfor{
+    margin-top: 5%;
+   margin-bottom: 2%;
+    margin-right: 2%;
+}
+
+.formularioUsuario{
+    width: 45%!important;
+    margin-right: 4%;
+}
+
+.formufecha{
+    margin-left: 5%;
+}
+
+
+.campogrande{
+    margin-left: 2.5%;
+}
+
+.imgestrecha {
+    margin-left: 20.5%!important;
+}
+
+
+.campoancho{
+    margin-left: 2.5%;
+    width: 64.5%;
+}
+
+.formularioizda {
+    margin-left: -5.5%;
+}
+
+h2.nombreNav {
+    margin-top: 7%;
+}
+
+.buscadorUsuario{
+     margin-top: 7%;
+}
+.botonBuscadorUsuario{
+     margin-top: 12%;
+}
+
+.buscadorMascota{
+     margin-top: 10%;
+}
+.botonBuscadorMascota{
+     margin-top: 18%;
+}
+
+@media (max-width: 768px){
+    .ocultoMovil{
+        display: none;
+    }
+    
+}
+
+@media (min-width: 768px){
+    .ocultoPC{
+        display: none;
+    }
+    
+    .logotipo{
+       
+    }
+    
+    .botonBuscadorMascota{
+        margin-top: 12%!important;
+    }
+
+}
+
+@media (min-width: 341px){
+
+}
