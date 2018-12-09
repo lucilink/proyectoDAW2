@@ -1,0 +1,163 @@
+<?php
+/**
+ * File  vMantenimientoUsuarios.php
+ * @author Lucía.
+ *
+ * Fichero que contiene la vista del mantenimiento de los departamentos.
+ * Fecha última revisión 09-05-2018
+ */
+?>
+<!--
+    Cargamos el fichero de jQuery, que será utlizado para activar o desactivar el botón de importar,
+    dependiendo de si hay algún fichero seleccionado.
+    -->
+    <br>
+<header>
+    <div class="container">
+        <h1 class="text-center">Mantenimiento de Usuarios</h1>
+    </div>
+</header>
+
+<br>
+<div class="container">
+    <section class="main row"> 
+        <div class="col-md-12">
+            <form name="formulario" class="" action="index.php?pagina=mtoUsuarios" method="post" >
+            <br>
+                
+            <div class="col-md-4">
+                <img src="/webroot/img/mtoUsuarios.png" width="100%" height="100%" class="img-rounded img-responsive"/>                     
+            </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control buscadorUsuario" id="alfabetico" name="Nombre"
+                           placeholder="Nombre Usuario" <?php if (isset($_SESSION['criterioBusqueda'])){
+                        echo 'value="', $_SESSION['criterioBusqueda'], '"';
+                    } ?>>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="float-right">
+                        <input type="submit" name="buscar" class="btn btn-rounded btn-default botonBuscadorUsuario" value="Buscar"/>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+<br>
+<div class="container">
+    <div class="col-md-12">
+        <table class="table">
+            <thead class="mdb-color darken-3">
+            <tr class="text-white">
+                <th class="text-center">CodUsuario</th>
+                <th>Nombre</th>
+                <th>Apellido 1</th>
+                <th>Apellido 2</th>
+                <th class="text-center">DNI</th>
+                <th class="text-center">Fecha Nacimiento</th>
+                <th class="text-center">Perfil</th>
+                <th class="text-center">Telefono</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Direccion</th>
+                <th class="text-center">Eliminar Usuario</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            /**
+             * Obtenemos los registros de la base de datos los recorremos cargándolos en una tabla.
+             */
+            for ($i=0;$i<count($usuarios);$i++){
+                //if(is_null($usuarios[$i]->getFechaBajaUsuario())){
+                    echo "<tr class='table-info'>";
+                    echo "<td class='text-center'>". $usuarios[$i]->getCodUsuario() ."</td>";
+                    echo "<td>". $usuarios[$i]->getNombre() ."</td>";
+                    echo "<td>". $usuarios[$i]->getApellido1() ."</td>";
+                    echo "<td>". $usuarios[$i]->getApellido2() ."</td>";
+                    echo "<td>". $usuarios[$i]->getDni() ."</td>";
+                    echo "<td>". $usuarios[$i]->getFNacimiento() ."</td>";
+                    echo "<td>". $usuarios[$i]->getPerfil() ."</td>";
+                    echo "<td>". $usuarios[$i]->getTelefono() ."</td>";
+                    echo "<td>". $usuarios[$i]->getEmail() ."</td>";
+                    echo "<td>". $usuarios[$i]->getDireccion() ."</td>";
+                    if($usuarios[$i]->getPerfil()!="Administrador"){
+                    echo '<td><a href="index.php?Usuario='.$usuarios[$i]->getCodUsuario().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=borrarUsuario" title="Eliminar usuario">Eliminar </a></td>';
+                    }
+                    echo "</tr>";     
+               /* }else{
+                    echo "<tr class='table-danger'>";
+                    echo "<td class='text-center'>". $usuarios[$i]->getCodUsuario() ."</td>";
+                    echo "<td>". $usuarios[$i]->getDescripcion() ."</td>";
+                    echo "<td>". $usuarios[$i]->getPerfil() ."</td>";
+                    echo "<td>". $usuarios[$i]->getFechaBajaUsuario() ."</td>";
+                    echo '<td class="text-center"><a href="index.php?Usuario='.$usuarios[$i]->getCodUsuario().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=modificarUsuario" title="Editar Usuario"><i class="fa fa-pencil"></i> </a>/ 
+                        <a href="index.php?Usuario='.$usuarios[$i]->getCodUsuario().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=bajaUsuario" title="Eliminar usuario"><i class="fa fa-trash"></i> </a>/
+                            <a href="index.php?Usuario='.$usuarios[$i]->getCodUsuario().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=rehabilitarUsuario" title="Alta Logico"><i class="fa fa-arrow-up" style="color: green"></i></a>
+                        </td>';//Creamos los enlaces a las ventanas de eliminar y editar, pasando como uno de los parámetro el código del departamento seleccionado      
+                    echo "</tr>";   
+                }*/
+            }     
+            ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+<?php 
+if(count($usuarios)==0){?>
+    
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2 class="text-center">No se han encontrado resultados para su busqueda</h2>
+    </div>
+    <div class="col-md-2"></div>
+    <br>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <img src="/webroot/img/noresult.png" width="50%" height="50%" class="img-rounded img-responsive" style="margin-left:20%;"/>  
+    </div>
+    <div class="col-md-3"></div>
+<?php }?>
+    <br>
+<div class="container-fluid">
+    <div class="col-md-12">
+        <form name="formulario" class="" action="index.php?pagina=mtoMascotas" method="post" >
+            <div class="row">
+                <div class="col-md-12"></div>
+                <div class="col-md-5"></div>
+                <div class="col-md-2">
+                    <nav aria-label="pagination example">
+                        <ul class="pagination pg-blue mb-0">
+                            <?php
+                            if($_GET['numeroPagina']==1){
+                                ?>
+                                <li class="page-item disabled"><a class="page-link">&laquo;</a></li>
+
+                                <li class="page-item active"><a class="page-link"><?php echo $_GET['numeroPagina'].' de '.$numeroPaginas;?></a></li>
+                                <li class="page-item <?php if($numeroPaginas==1 || $numeroPaginas==0){echo 'disabled';}?>"><a class="page-link" href="index.php?numeroPagina=<?php echo $_GET['numeroPagina']+1;?>&pagina=mtoUsuarios">&raquo;</a></li>
+                                <?php
+                            }elseif ($_GET['numeroPagina']<$numeroPaginas){
+                                ?>
+                                <li class="page-item"><a class="page-link"href="index.php?numeroPagina=<?php echo $_GET['numeroPagina']-1;?>&pagina=mtoUsuarios">&laquo;</a></li>
+                                <li class="page-item active"><a class="page-link" href=""><?php echo $_GET['numeroPagina'].' de '.$numeroPaginas;?></a></li>
+                                <li class="page-item"><a class="page-link"href="index.php?numeroPagina=<?php echo $_GET['numeroPagina']+1;?>&pagina=mtoUsuarios">&raquo;</a></li>
+                                <?php
+                            }elseif ($_GET['numeroPagina']==$numeroPaginas){
+                                ?>
+                                <li class="page-item"><a class="page-link" href="index.php?numeroPagina=<?php echo $_GET['numeroPagina']-1;?>&pagina=mtoUsuarios">&laquo;</a></li>
+                                <li class="page-item active"><a class="page-link" href=""><?php echo $_GET['numeroPagina'].' de '.$numeroPaginas;?></a></li>
+                                <li class="page-item disabled"><a class="page-link" href="">&raquo;</a></li>
+                                <?php
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+            <br>
+        </form>
+</div>
+</div>
