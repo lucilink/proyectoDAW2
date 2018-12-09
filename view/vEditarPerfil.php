@@ -9,7 +9,7 @@
         <div class="col-md-6">           
             <img src="/webroot/img/fotoedotarperfil.png" width="100%" height="100%" class="img-rounded img-responsive"/>                     
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-10">
             <form name="formulario" class="form-horizontal" action="index.php?pagina=editarPerfil" method="post">
                
                 <div class="form-group">
@@ -28,7 +28,7 @@
                </div>
 
                <div class="form-inline">
-                   <input type="text" id="materialFormCardNameEx" class="form-control" name="apellido1" value="<?php if(isset($_POST['enviar'])){ echo $_POST['apellido1'];}else{ echo $_SESSION['usuario']->getApellido1();}?>">
+                   <input type="text" id="materialFormCardNameEx" class="form-control campopeque" name="apellido1" value="<?php if(isset($_POST['enviar'])){ echo $_POST['apellido1'];}else{ echo $_SESSION['usuario']->getApellido1();}?>">
                    <?php //si existe mensaje de error lo mostramos
                    if(isset($mensajeError['errorPrimerApellido'])){echo '<span style="color:red">'.$mensajeError['errorPrimerApellido'].'</span>';}
                    ?>
@@ -40,7 +40,7 @@
                 <br>
 
                <div class="form-inline">
-                   <input type="text" id="materialFormCardNameEx" class="form-control" name="DNI" value="<?php if(isset($_POST['enviar'])){ echo $_POST['DNI'];}else{ echo $_SESSION['usuario']->getDni();}?>">
+                   <input type="text" id="materialFormCardNameEx" class="form-control campopeque" name="DNI" value="<?php if(isset($_POST['enviar'])){ echo $_POST['DNI'];}else{ echo $_SESSION['usuario']->getDni();}?>">
                    <?php //si existe mensaje de error lo mostramos
                    if(isset($mensajeError['errorDNI'])){echo '<span style="color:red">'.$mensajeError['errorDNI'].'</span>';}
                    ?>
@@ -53,7 +53,7 @@
 
 
                <div class="form-inline">
-                   <input type="text" id="materialFormCardNameEx" class="form-control" name="telefono" value="<?php if(isset($_POST['enviar'])){ echo $_POST['telefono'];}else{ echo $_SESSION['usuario']->getTelefono();}?>">
+                   <input type="text" id="materialFormCardNameEx" class="form-control campopeque" name="telefono" value="<?php if(isset($_POST['enviar'])){ echo $_POST['telefono'];}else{ echo $_SESSION['usuario']->getTelefono();}?>">
                    <?php //si existe mensaje de error lo mostramos
                    if(isset($mensajeError['errorTelefono'])){echo '<span style="color:red">'.$mensajeError['errorTelefono'].'</span>';}
                    ?>
@@ -90,6 +90,7 @@
                    <input type="submit" name="enviar" class="btn btn-rounded btnAceptar" value="Aceptar">
                    <input type="submit" name="volver" class="btn btn-rounded btnCancelar" value="Cancelar">
                </div>
+                <br>
            </form>
         </div>
     </section>

@@ -47,21 +47,20 @@
 </div>
 <br>
 <div class="container">
-    <div class="col-md-12">
+    <div class="col-md-12 col-xs-8"> 
         <table class="table">
             <thead class="mdb-color darken-3">
             <tr class="text-white">
                 <th class="text-center">CodUsuario</th>
                 <th>Nombre</th>
-                <th>Apellido 1</th>
-                <th>Apellido 2</th>
+                <th class="text-center ocultoMovil">Apellido 1</th>
+                <th class="text-center ocultoMovil"Apellido 2</th>
                 <th class="text-center">DNI</th>
-                <th class="text-center">Fecha Nacimiento</th>
-                <th class="text-center">Perfil</th>
-                <th class="text-center">Telefono</th>
-                <th class="text-center">Email</th>
-                <th class="text-center">Direccion</th>
-                <th class="text-center">Eliminar Usuario</th>
+                <th class="text-center ocultoMovil">Fecha Nacimiento</th>
+                <th class="text-center ocultoMovil">Telefono</th>
+                <th class="text-center ocultoMovil">Email</th>
+                <th class="text-center ocultoMovil">Direccion</th>
+                <th class="text-center">Eliminar Usuario</th> 
             </tr>
             </thead>
             <tbody>
@@ -74,14 +73,13 @@
                     echo "<tr class='table-info'>";
                     echo "<td class='text-center'>". $usuarios[$i]->getCodUsuario() ."</td>";
                     echo "<td>". $usuarios[$i]->getNombre() ."</td>";
-                    echo "<td>". $usuarios[$i]->getApellido1() ."</td>";
-                    echo "<td>". $usuarios[$i]->getApellido2() ."</td>";
+                    echo "<td class='ocultoMovil'>". $usuarios[$i]->getApellido1() ."</td>";
+                    echo "<td class='ocultoMovil'>". $usuarios[$i]->getApellido2() ."</td>";
                     echo "<td>". $usuarios[$i]->getDni() ."</td>";
-                    echo "<td>". $usuarios[$i]->getFNacimiento() ."</td>";
-                    echo "<td>". $usuarios[$i]->getPerfil() ."</td>";
-                    echo "<td>". $usuarios[$i]->getTelefono() ."</td>";
-                    echo "<td>". $usuarios[$i]->getEmail() ."</td>";
-                    echo "<td>". $usuarios[$i]->getDireccion() ."</td>";
+                    echo "<td class='ocultoMovil'>". $usuarios[$i]->getFNacimiento() ."</td>";
+                    echo "<td class='ocultoMovil'>". $usuarios[$i]->getTelefono() ."</td>";
+                    echo "<td class='ocultoMovil'>". $usuarios[$i]->getEmail() ."</td>";
+                    echo "<td class='ocultoMovil'>". $usuarios[$i]->getDireccion() ."</td>";
                     if($usuarios[$i]->getPerfil()!="Administrador"){
                     echo '<td><a href="index.php?Usuario='.$usuarios[$i]->getCodUsuario().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=borrarUsuario" title="Eliminar usuario">Eliminar </a></td>';
                     }
