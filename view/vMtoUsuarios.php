@@ -54,7 +54,7 @@
                 <th class="text-center">CodUsuario</th>
                 <th>Nombre</th>
                 <th class="text-center ocultoMovil">Apellido 1</th>
-                <th class="text-center ocultoMovil"Apellido 2</th>
+                <th class="text-center ocultoMovil">Apellido 2</th>
                 <th class="text-center">DNI</th>
                 <th class="text-center ocultoMovil">Fecha Nacimiento</th>
                 <th class="text-center ocultoMovil">Telefono</th>
