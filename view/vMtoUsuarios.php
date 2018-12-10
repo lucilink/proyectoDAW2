@@ -69,7 +69,6 @@
              * Obtenemos los registros de la base de datos los recorremos cargándolos en una tabla.
              */
             for ($i=0;$i<count($usuarios);$i++){
-                //if(is_null($usuarios[$i]->getFechaBajaUsuario())){
                     echo "<tr class='table-info'>";
                     echo "<td class='text-center'>". $usuarios[$i]->getCodUsuario() ."</td>";
                     echo "<td>". $usuarios[$i]->getNombre() ."</td>";
