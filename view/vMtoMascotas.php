@@ -93,7 +93,7 @@
                         }
                     } 
                     if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && is_null($mascotas[$i]->getFechaReserva())){
-                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=reservaMascota" title="Reservar Mascota">Reservar</p></td>';
+                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=reservaMascota" title="Reservar Mascota" class="btnReserva">Reservar</p></td>';
                     }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && $_SESSION['usuario']->getCodUsuario()!=$mascotas[$i]->getCodUsuario()){
                         echo '<p class="text-center mascota" style="color:red;">Reservado</p>';
 
@@ -136,21 +136,21 @@
                         if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador' && is_null($mascotas[$i]->getFechaReserva())){
                         echo '<ul class="list-inline text-center">';
                             echo '<li class="mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&pagina=eliminarMascota" title="Eliminar Mascota">Eliminar</a></li>';
-                        echo '</ul>';
+                        echo '</ul>'; 
                         }
                     } 
                     if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && is_null($mascotas[$i]->getFechaReserva())){
-                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=reservaMascota" title="Reservar Mascota">Reservar</p></td>';
+                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=reservaMascota" title="Reservar Mascota" class="btn btn-rounded btnAceptar">Reservar</p></td>';
                     }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && $_SESSION['usuario']->getCodUsuario()!=$mascotas[$i]->getCodUsuario()){
                         echo '<p class="text-center mascota" style="color:red;">Reservado</p>';
 
                     }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && $_SESSION['usuario']->getCodUsuario()==$mascotas[$i]->getCodUsuario()){
-                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=anularReserva" title="Anular reserva Mascota">Anular Reserva</p></td>';
+                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=anularReserva" title="Anular reserva Mascota" class="btn btn-rounded btnCancelar">Anular Reserva</p></td>';
 
                     }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador' && is_null($mascotas[$i]->getFechaReserva())){
                         echo '<p class="text-center mascota" style="color:green;">Disponible</p>';
                     }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador' && $mascotas[$i]->getFechaReserva()!=Null){
-                       echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=anularReserva" title="Anular reserva Mascota">Anular Reserva</p></td>';
+                       echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=anularReserva" title="Anular reserva Mascota" class="btn btn-rounded btnCancelar">Anular Reserva</p></td>';
                     } 
                     echo "</td>";
                     echo "</tr>";
