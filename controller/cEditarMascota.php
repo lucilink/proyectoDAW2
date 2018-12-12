@@ -38,7 +38,7 @@ if(!isset($_SESSION['usuario'])){
         if(Mascota::editarDatosMascota($nombre,$descripcion,$edad,$sexo,$vacunado,$microchip,$esterilizado,$tipo,$codMascota)){
             header('Location: index.php?numeroPagina=1&pagina=mtoMascotas');
         }else{
-            echo "error al editar";
+            $mensajeError["errorModificar"]="Ha habido un error";
             $_GET["pagina"] = "editarMascota";
             include_once "view/layout.php";
         }

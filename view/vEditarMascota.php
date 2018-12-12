@@ -75,7 +75,9 @@
                         <option value="Otro" <?php if($mascota->getTipo()=="Otro"){ echo 'selected';}?>>Otro</option> 
                     </select> 
                </div>
-                 
+                  <?php //si existe mensaje de error lo mostramos
+                    if(isset($mensajeError['errorModificar'])){echo '<span style="color:red">'.$mensajeError['errorModificar'].'</span>';}
+                    ?>
                 <br><br>
                 <div class="text-center py-4 mt-3">
                     <input type="submit" name="si" class="btn btn-rounded btnAceptar" value="Si">
