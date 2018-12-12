@@ -228,31 +228,25 @@ class MascotasPDO{
         }
         return $arrayMascotas;
     }
-    
-    public static function editarDatosMascota($nombre,$edad,$codMascota){
-        $editado=false;
-        $consulta="update Mascotas set Nombre=?,Edad=? where CodMascota=?";
-        $resConsulta= DBPDO::ejecutaConsulta($consulta,[$nombre,$edad,$codMascota]);
-        if ($resConsulta->rowCount()==1){
-            $editado=true;
-        }
-        return $editado;
-    }
-    
+
     /**
-public static function editarDatosMascota($nombre,$edad,$vacunado,$microchip,$esterilizado,$tipo,$codMascota){
+     * @function beditarDatosMascota($nombre,$descripcion,$edad,$sexo,$vacunado,$microchip,$esterilizado,$tipo,$codMascota).
+     *
+     * Función para editar los datos de una Mascota.
+     *
+     * @param string $nombre, string $descripcion, int $edad, string $sexo, string $vacunado, string $microchip, string $esterilizado, string $tipo, string $codMascota
+     *
+     * @return boolean devuelve true si los datos de la mascota se han podido editar y false en caso contrario
+     */
+    public static function editarDatosMascota($nombre,$descripcion,$edad,$sexo,$vacunado,$microchip,$esterilizado,$tipo,$codMascota){
         $editado=false;
-        $consulta="update Mascotas set Nombre=?,Edad=?,Vacunado=?,Microchip=?,Esterilizado=?,Tipo=? where CodMascota=?";
-        $resConsulta= DBPDO::ejecutaConsulta($consulta,[$nombre,$edad,$vacunado,$microchip,$esterilizado,$tipo,$codMascota]);
+        $consulta="update Mascotas set Nombre=?,Descripcion=?,Edad=?,Sexo=?,Vacunado=?,Microchip=?,Esterilizado=?,Tipo=? where CodMascota=?";
+        $resConsulta= DBPDO::ejecutaConsulta($consulta,[$nombre,$descripcion,$edad,$sexo,$vacunado,$microchip,$esterilizado,$tipo,$codMascota]);
         if ($resConsulta->rowCount()==1){
             $editado=true;
         }
         return $editado;
     }
-     * 
-     * 
-     *      */
-    
     
     
 }
