@@ -7,9 +7,9 @@
 <div class="container">
     <section class="main row">
         <div class="col-md-6">           
-            <img src="/webroot/img/eliminarPerfil.png" width="80%" height="80%" class="img-rounded img-responsive"/>                     
+            <img src="/webroot/img/eliminarPerfil.png" width="80%" height="80%" class="img-rounded img-responsive imgElim"/>                     
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-10">
             <form name="formulario" class="form-horizontal" action="index.php?pagina=borrarUsuario&Usuario=<?php echo $_GET['Usuario'];?>" method="post">          
 
                 <div class="form-group">  
@@ -23,17 +23,17 @@
                 </div>
 
                 <div class="form-inline"> 
-                    <input type="text" id="materialFormCardNameEx" class="form-control" name="apellido1" value="<?php echo $usuario->getApellido1();?>" readonly>
+                    <input type="text" id="materialFormCardNameEx" class="form-control campopeque" name="apellido1" value="<?php echo $usuario->getApellido1();?>" readonly>
                     <input type="text" id="materialFormCardNameEx" class="form-control" name="apellido2" value="<?php echo $usuario->getApellido2();?>" readonly>                    
                 </div>
                 <br>
                 <div class="form-inline"> 
-                    <input type="text" id="materialFormCardNameEx" class="form-control" name="codUsuario" value="<?php echo $usuario->getDni();?>" readonly>
+                    <input type="text" id="materialFormCardNameEx" class="form-control campopeque" name="codUsuario" value="<?php echo $usuario->getDni();?>" readonly>
                     <input type="text" id="materialFormCardNameEx" class="form-control" name="codUsuario" value="<?php echo $usuario->getFNacimiento();?>" readonly>                   
                 </div>
                 <br>
                 <div class="form-inline"> 
-                    <input type="text" id="materialFormCardNameEx" class="form-control" name="codUsuario" value="<?php echo $usuario->getTelefono();?>" readonly>
+                    <input type="text" id="materialFormCardNameEx" class="form-control campopeque" name="codUsuario" value="<?php echo $usuario->getTelefono();?>" readonly>
                     <input type="text" id="materialFormCardNameEx" class="form-control" name="codUsuario" value="<?php echo $usuario->getEmail();?>" readonly>                    
                 </div>
                 <br>                

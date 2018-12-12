@@ -62,11 +62,9 @@
             for ($i=0;$i<count($mascotas);$i++){
                 //if(is_null($usuarios[$i]->getFechaBajaUsuario())){
                     echo "<tr class='table-info'>";
-                    echo '<td width="40%"><img src="data:image/jpeg;base64,'.base64_encode(stripslashes($mascotas[$i]->getImagen())) .' " width="100%" height="100%" class="img-rounded img-responsive"/></td>';
-                    /*if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador'){
-                        echo "<td>". $mascotas[$i]->getCodMascota() ."</td>";
-                    }*/
-                    echo "<td class=''>";
+                    echo '<td width="40%" class="imagenbd">';
+                    echo '<img src="data:image/jpeg;base64,'.base64_encode(stripslashes($mascotas[$i]->getImagen())) .' " width="100%" height="100%" class="img-rounded img-responsive"/>';
+                    echo '<div class="ocultoPC">';
                     if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador'){
                         echo '<p class="text-center mascota">'. $mascotas[$i]->getCodMascota() .'</p>';
                     }
@@ -95,7 +93,7 @@
                         }
                     } 
                     if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && is_null($mascotas[$i]->getFechaReserva())){
-                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=reservaMascota" title="Reservar Mascota">Reservar</p></td>';
+                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=reservaMascota" title="Reservar Mascota" class="btnReserva">Reservar</p></td>';
                     }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && $_SESSION['usuario']->getCodUsuario()!=$mascotas[$i]->getCodUsuario()){
                         echo '<p class="text-center mascota" style="color:red;">Reservado</p>';
 
@@ -106,6 +104,53 @@
                         echo '<p class="text-center mascota" style="color:green;">Disponible</p>';
                     }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador' && $mascotas[$i]->getFechaReserva()!=Null){
                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=anularReserva" title="Anular reserva Mascota">Anular Reserva</p></td>';
+                    }
+                    echo '</div>';
+                    
+                    echo '</td>';
+                    /*if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador'){
+                        echo "<td>". $mascotas[$i]->getCodMascota() ."</td>";
+                    }*/
+                    echo "<td class='textobd ocultoMovil'>";
+                    if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador'){
+                        echo '<p class="text-center mascota">'. $mascotas[$i]->getCodMascota() .'</p>';
+                    }
+                    echo '<h2 class="text-center datosmas">'.$mascotas[$i]->getNombre().'</h2>';
+                    echo '<p class="text-center mascota"> '.$mascotas[$i]->getDescripcion().'</p>';
+                    echo '<ul class="list-inline text-center">';
+                        echo '<li class="mascota"> Edad: '. $mascotas[$i]->getEdad().'</li>';
+                        echo '<li class="mascota">'. $mascotas[$i]->getSexo().'</li>';
+                    echo '</ul>';                   
+                    echo '<ul class="list-inline text-center">';
+                        echo '<li class="mascota"> Vacunado: '. $mascotas[$i]->getVacunado().'</li>';
+                        echo '<li class="mascota"> Esterilizado: '. $mascotas[$i]->getEsterilizado().'</li>';
+                        echo '<li class="mascota"> Micrhochip: '.$mascotas[$i]->getMicrohip() .'</li>';
+                    echo '</ul>';
+                    if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador'){
+                        echo '<ul class="list-inline text-center">';
+                            echo '<li class="mascota"> Fecha Llegada: '. $mascotas[$i]->getFechaLlegada() .'</li>';
+                            if($mascotas[$i]->getFechaReserva()!=Null){
+                                echo '<li class="mascota"> Fecha Reserva: '. $mascotas[$i]->getFechaReserva() .'</li>';
+                            }
+                        echo '</ul>';
+                        if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador' && is_null($mascotas[$i]->getFechaReserva())){
+                        echo '<ul class="list-inline text-center">';
+                            echo '<li class="mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&pagina=eliminarMascota" title="Eliminar Mascota">Eliminar</a></li>';
+                        echo '</ul>'; 
+                        }
+                    } 
+                    if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && is_null($mascotas[$i]->getFechaReserva())){
+                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=reservaMascota" title="Reservar Mascota" class="btn btn-rounded btnAceptar">Reservar</p></td>';
+                    }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && $_SESSION['usuario']->getCodUsuario()!=$mascotas[$i]->getCodUsuario()){
+                        echo '<p class="text-center mascota" style="color:red;">Reservado</p>';
+
+                    }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario' && $_SESSION['usuario']->getCodUsuario()==$mascotas[$i]->getCodUsuario()){
+                        echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=anularReserva" title="Anular reserva Mascota" class="btn btn-rounded btnCancelar">Anular Reserva</p></td>';
+
+                    }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador' && is_null($mascotas[$i]->getFechaReserva())){
+                        echo '<p class="text-center mascota" style="color:green;">Disponible</p>';
+                    }else if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Administrador' && $mascotas[$i]->getFechaReserva()!=Null){
+                       echo '<p class="text-center mascota"><a href="index.php?Mascota='.$mascotas[$i]->getCodMascota().'&numeroPagina='.$_GET['numeroPagina'].'&pagina=anularReserva" title="Anular reserva Mascota" class="btn btn-rounded btnCancelar">Anular Reserva</p></td>';
                     } 
                     echo "</td>";
                     echo "</tr>";

@@ -49,7 +49,7 @@
                         <li><a href="index.php?pagina=nuevaMascota" class="text-white">Nueva Mascota</a></li>
                     <?php }?>
                     <?php
-                    if(isset($_SESSION['usuario'])){ ?>    
+                    if(isset($_SESSION['usuario']) && $_SESSION['usuario']->getPerfil()=='Usuario'){ ?>    
                         <li> <a class="" href="index.php?pagina=editarPerfil">Editar Perfil</a></li>
                     <?php }?>
                     <?php

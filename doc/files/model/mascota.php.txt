@@ -269,24 +269,24 @@ class Mascota{
     }
     
 
-    
-    public function editarDatosMascota ($nombre,$edad,$codMascota){
-        $editado = false;
-        if(MascotasPDO::editarDatosMascota($nombre,$edad,$codMascota)){
-            $editado=true;
-        }
-        return $editado;
-    }
-    
     /**
- public function editarDatosMascota ($nombre,$edad,$vacunado,$microchip,$esterilizado,$tipo,$codMascota){
-        $editado = false;
-        if(MascotasPDO::editarDatosMascota($nombre,$edad,$vacunado,$microchip,$esterilizado,$tipo,$codMascota)){
-            $editado=true;
+     * @function beditarDatosMascota($nombre,$descripcion,$edad,$sexo,$vacunado,$microchip,$esterilizado,$tipo,$codMascota).
+     *
+     * Función para editar los datos de una Mascota.
+     *
+     * @param string $nombre, string $descripcion, int $edad, string $sexo, string $vacunado, string $microchip, string $esterilizado, string $tipo, string $codMascota
+     *
+     * @return boolean devuelve true si los datos de la mascota se han podido editar y false en caso contrario
+     */
+    
+    public function  editarDatosMascota ($nombre,$descripcion,$edad,$sexo,$vacunado,$microchip,$esterilizado,$tipo,$codMascota){
+            $editado = false;
+            if(MascotasPDO::editarDatosMascota($nombre,$descripcion,$edad,$sexo,$vacunado,$microchip,$esterilizado,$tipo,$codMascota)){
+                $editado=true;
+            }
+            return $editado;
         }
-        return $editado;
-    }
-     *      */
+    
     
     
    /**
