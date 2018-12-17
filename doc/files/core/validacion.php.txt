@@ -191,13 +191,31 @@ class validacion{
      * 
      */
     
-    public static function validarDNI($dni){
+    public static function validarDNI($dni,$maxTamanio, $minTamanio, $obligatorio){
         $mensajeError=null;
         $letra = substr($dni, -1);
 	$numeros = substr($dni, 0, -1);
-	if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros%23, 1) != $letra && strlen($letra) != 1 && strlen ($numeros) != 8 ){
-            $mensajeError="El dni introducido no es valido";
-	}
+	if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros%23, 1) == $letra && strlen($letra) == 1 && strlen ($numeros) == 8 && self::comprobarNoVacio($dni) && self::comprobarMaxTamanio($dni, $maxTamanio) && self::comprobarMinTamanio($dni, $minTamanio)) {
+            $mensajeError=null;
+	}  else {
+            $mensajeError = "DNI no valido";
+        } if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros%23, 1) == $letra && strlen($letra) == 1 && strlen ($numeros) == 8 ){
+            $mensajeError = null;
+        }else{
+            $mensajeError = "DNI no valido";
+        }
+        if (!self::comprobarNoVacio($dni)) {
+            $mensajeError = " campo Vacio";
+        }
+        if (!self::comprobarMaxTamanio($dni, $maxTamanio)) {
+            $mensajeError = " El tamaño maximo es " . $maxTamanio;
+        }
+        if (!self::comprobarMinTamanio($dni, $minTamanio)) {
+            $mensajeError = " El tamaño minimo es " . $minTamanio;
+        }
+        if (empty(htmlspecialchars(strip_tags(trim($dni)))) && $obligatorio == 0) {
+            $mensajeError = null;
+        }
         return $mensajeError;
     }
     
@@ -212,16 +230,33 @@ class validacion{
      * 
      */
     
-    public static function validarNumeroTelefono($cadena){
-        $patron="/^[9|6|7][0-9]{8}$/";
+    public static function validarNumeroTelefono($cadena, $maxTamanio, $minTamanio, $obligatorio){
+        $patron='/^[9|6|7][0-9]{8}$/';
         $cadena = htmlspecialchars(strip_tags(trim((string)$cadena)));
         $mensajeError = null;
-        if (preg_match($patron, $cadena) && self::comprobarNoVacio((string)$cadena) && self::comprobarMaxTamanio((string)$cadena, $maxTamanio)
-            && self::comprobarMinTamanio((string)$cadena, $minTamanio)) {
+        if (preg_match($patron, $cadena) && self::comprobarNoVacio($cadena) && self::comprobarMaxTamanio($cadena, $maxTamanio) && self::comprobarMinTamanio($cadena, $minTamanio)) {
             $mensajeError = null;
         } else {
             $mensajeError = "Numero de telefono no valido <br>";
-        }     
+        }
+        if (preg_match($patron, $cadena)){
+            $mensajeError= null;            
+         }else{
+           $mensajeError= "el numero de telefono no es valido";
+         }
+         if (!self::comprobarNoVacio($cadena)) {
+            $mensajeError = " campo Vacio";
+        }
+        if (!self::comprobarMaxTamanio($cadena, $maxTamanio)) {
+            $mensajeError = " El tamaño maximo es " . $maxTamanio;
+        }
+        if (!self::comprobarMinTamanio($cadena, $minTamanio)) {
+            $mensajeError = " El tamaño minimo es " . $minTamanio;
+        }
+        if (empty(htmlspecialchars(strip_tags(trim($cadena)))) && $obligatorio == 0) {
+            $mensajeError = null;
+        }
+        
     }
     
     /**

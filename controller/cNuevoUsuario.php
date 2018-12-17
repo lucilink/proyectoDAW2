@@ -7,10 +7,10 @@ if(isset($_POST['enviar'])){
     $mensajeError["errorNombre"]= validacion::comprobarAlfabetico($_POST['nombre'], 25, 3, 1);
     $mensajeError["errorPrimerApellido"]= validacion::comprobarAlfabetico($_POST['apellido1'], 50, 3, 1);
     $mensajeError["errorSegundoApellido"]= validacion::comprobarAlfabetico($_POST['apellido2'], 50, 3, 1);
-    $mensajeError["errorDNI"]= validacion::validarDNI($_POST['DNI']);
+    $mensajeError["errorDNI"]= validacion::validarDNI($_POST['DNI'],9,8,1);
     $mensajeError["errorFNacimiento"]= validacion::validarFechaNacimiento($_POST['fNacimiento'], 1);
     $mensajeError["errorEmail"]= validacion::validarEmail($_POST['email'], 255, 10, 1);
-    $mensajeError["errorTelefono"]= validacion::validarNumeroTelefono($_POST['telefono'],9,1);
+    $mensajeError["errorTelefono"]= validacion::validarNumeroTelefono($_POST['telefono'],9,8,1);
     $mensajeError["errorDireccion"]= validacion::comprobarAlfaNumerico($_POST['direccion'],255,1,1);
     
     if ($_POST['password']!=$_POST['repPassword']){ 

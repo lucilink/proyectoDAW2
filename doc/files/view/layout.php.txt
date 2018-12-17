@@ -13,7 +13,7 @@
 ?>
 <html lang="es">
 <head>
-    <link rel="shortcut icon" href="webroot/img/favicon.ico" />
+    <link rel="icon" href="webroot/img/logo.png" sizes="64x64" type="image/png"/>
     <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
